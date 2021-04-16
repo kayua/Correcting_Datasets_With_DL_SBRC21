@@ -33,5 +33,4 @@ Esse repositório possui algumas implementações de algoritmos de aprendizado d
 `keras 2.4.3`
 `setuptools 45.2.0`
 `h5py 2.10.0`
-`numpy 1.18.5`
 
