@@ -1,0 +1,4 @@
+tensorflow>=2.3.0
+setuptools>=45.2.0
+tqdm>=4.48.2
+ushlex>=0.99.1
