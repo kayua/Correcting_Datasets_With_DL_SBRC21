@@ -1,4 +1,4 @@
-# Introdução ao Machine Learning(Trocar Isso)
+# Correct Torrent Trace - Machine Learning
 
 Exemplo aplicação de aprendizado de máquinas a diversos problemas.
 
@@ -25,13 +25,13 @@ Esse repositório possui algumas implementações de algoritmos de aprendizado d
 
 ## Requirements:
 
+`matplotlib 3.4.1`
+`tensorflow 2.4.1`
+`tqdm 4.60.0`
 `numpy 1.18.5`
-`Keras 2.4.3`
-`tqdm 4.48.2`
-`tensorflow 2.3.0`
 
+`keras 2.4.3`
+`setuptools 45.2.0`
 `h5py 2.10.0`
-`scikit-learn 0.23.2`
-`matplotlib 3.2.2`
-`pandas`
-`scipy 1.4.1`
+`numpy 1.18.5`
+
