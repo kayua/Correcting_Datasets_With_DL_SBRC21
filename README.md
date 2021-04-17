@@ -5,7 +5,43 @@ These scripts contain a complete framework that allows you to simulate, correct 
 We made some initial experiments available with this repository.
 
 ## Free parameters:
-    Parameters
+
+
+
+
+## Input parameters:
+
+                Torrent Trace Correct - Machine Learning
+
+
+    Optional Parameters 'main.py'
+
+        --original_swarm_file     |
+        --training_swarm_file     |
+        --corrected_swarm_file    |
+        --failed_swarm_file       |
+        --analyse_file            |
+        --analyse_file_mode       |
+        --model_architecture_file |
+        --model_weights_file      |
+        --size_window_left        |
+        --size_window_right       |
+        --num_sample_training     |
+        --num_epochs              |
+        --threshold               |
+        --dense_layers            |
+        --pif                     |
+        --dataset                 |
+        --seed                    |
+        --num_lstm_windows        |
+        --lstm_mode               |
+        --skip_train              |
+        --skip_correct            |
+        --skip_analyse            |
+        --verbosity               |
+        --------------------------------------------------------------
+
+    Free Parameters
 
         1 - Number of neurons per layers
         2 - Training optimization algorithm
@@ -13,37 +49,6 @@ We made some initial experiments available with this repository.
         4 - Number neural layers
         5 - Dropout probability
         6 - Threshold of correction
-
-
-
-## Input parameters:
-
-
-                Correction of monitoring data - Machine learning 
-
-    Optional Parameters
-
-        --models                |  Define a template file saved as the current model.
-        --original_swarm_file   |  Original input file.
-        --training_swarm_file   |  File of training samples.
-        --path_file_results     |  Path file results.
-        --size_window_left      |  Size window left.
-        --size_window_right     |  Size window right.
-        --num_sample_training   |  Numbers samples to training.
-        --corrected_swarm_file  |  File corrected.
-        --failed_swarm          |  File failed swarm.
-        --lstm_mode             |  Active LSTM mode.        
-        --num_epochs            |  Number of training epochs.
-
-        --------------------------------------------------------------
-
-    Required Parameters
-
-        Training         | This command allow training your model.
-        Correct          | This command allow correct session.
-        Predict          | This command is reserved for developers.
-        Evaluation       | This command allow evaluation your model.
-        help             | This command show this message.
 
 ## Requirements:
 
