@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-
 from analyse import Analyse
 from dataset import Dataset
 from models.models import Neural
 
 try:
+
     import sys
     from tqdm import tqdm
     import argparse
@@ -26,11 +26,8 @@ except ImportError as error:
     print()
     sys.exit(-1)
 
-
-#DEFAULT_PATH_SAVED_MODELS = 'models_saved/'
-
 DEFAULT_ORIGINAL_SWARM_FILE = 'swarm/original/S1d.sort_u_1n_3n'
-DEFAULT_TRAINING_SWARM_FILE = '' #'swarm/training/S2_25.sort_u_1n_3n'
+DEFAULT_TRAINING_SWARM_FILE = 'swarm/training/S2_25.sort_u_1n_3n'
 DEFAULT_CORRECTED_SWARM_FILE = 'swarm/results/swarm.corrected'
 DEFAULT_FAILED_SWARM_FILE = "swarm/failed/S1d.sort_u_1n_3n.fail10_seed1"
 DEFAULT_VALIDATION_SWARM_FILE = "swarm/validation/S1_25.sort_u_1n_3n"
@@ -38,31 +35,22 @@ DEFAULT_OUTPUT_EVOLUTION_ERROR_FIGURES = "evolution_error/"
 DEFAULT_MODEL_ARCHITECTURE_FILE = "models_saved/model_architecture.json"
 DEFAULT_MODEL_WEIGHTS_FILE = "models_saved/model_weights.h5"
 
-
-#DEFAULT_FILE_RESULTS = 'results/S1_5'
-
-#DEFAULT_PATH_LOG = 'logs/'
 DEFAULT_OPTIMIZER = 'adam'
 DEFAULT_FUNCTION_LOSS = 'mean_squared_error'
 
-DEFAULT_NUMBER_WINDOWS_LSTM = 2
 DEFAULT_SIZE_WINDOW_LEFT = 5
 DEFAULT_SIZE_WINDOW_RIGHT = 5
 DEFAULT_NUMBER_SAMPLES_TRAINING = 20000
-DEFAULT_LSTM_WINDOWS = 2
 DEFAULT_NUMBER_SAMPLES = 160
 DEFAULT_NUMBER_EPOCHS = 15
-
 DEFAULT_THRESHOLD = 0.75
 DEFAULT_DENSE_LAYERS = 3
-
 DEFAULT_LEARNING_PATTERNS_PER_ID = False
-DEFAULT_LSTM_MODE = False
 DEFAULT_VERBOSITY_LEVEL = logging.INFO
 TIME_FORMAT = '%Y-%m-%d,%H:%M:%S'
-
 DEFAULT_ANALYSE_FILE = "analyse.txt"
 DEFAULT_ANALYSE_FILE_MODE = "a"
+
 
 def analyse(args):
 
@@ -76,14 +64,14 @@ def analyse(args):
 
 def training_neural_network(args):
 
-    neural_network = Neural(DEFAULT_NUMBER_WINDOWS_LSTM, DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT,
+    neural_network = Neural(DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT,
                             DEFAULT_NUMBER_SAMPLES, args.threshold, DEFAULT_NUMBER_EPOCHS,
-                            DEFAULT_LEARNING_PATTERNS_PER_ID, DEFAULT_LSTM_MODE, DEFAULT_OPTIMIZER,
+                            DEFAULT_LEARNING_PATTERNS_PER_ID, DEFAULT_OPTIMIZER,
                             DEFAULT_FUNCTION_LOSS, args.dense_layers, DEFAULT_OUTPUT_EVOLUTION_ERROR_FIGURES)
     neural_network.create_neural_network()
 
     dataset_file = Dataset(DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT, DEFAULT_NUMBER_SAMPLES,
-                           DEFAULT_LSTM_MODE, args.corrected_swarm_file)
+                           args.corrected_swarm_file)
 
     dataset_file.load_samples(args.original_swarm_file)
     dataset_file.create_list_per_peer()
@@ -92,7 +80,7 @@ def training_neural_network(args):
     dataset_file.fill_borders()
 
     dataset_file_validation = Dataset(DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT, DEFAULT_NUMBER_SAMPLES,
-                           DEFAULT_LSTM_MODE, DEFAULT_VALIDATION_SWARM_FILE)
+                                      DEFAULT_VALIDATION_SWARM_FILE)
 
     dataset_file_validation.load_samples(DEFAULT_VALIDATION_SWARM_FILE)
     dataset_file_validation.create_list_per_peer()
@@ -100,13 +88,8 @@ def training_neural_network(args):
     dataset_file_validation.fill_gaps()
     dataset_file_validation.fill_borders()
 
-
     x, y = dataset_file.get_training_samples()
     x_validation, y_validation = dataset_file_validation.get_training_samples()
-
-    if DEFAULT_LSTM_MODE:
-
-        x = dataset_file.create_lstm_vector(x)
 
     neural_network.fit(x, y, x_validation, y_validation)
     neural_network.save_models(args.model_architecture_file, args.model_weights_file)
@@ -114,22 +97,18 @@ def training_neural_network(args):
 
 def predict_neural_network(args):
 
-    neural_network = Neural(DEFAULT_NUMBER_WINDOWS_LSTM, DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT,
+    neural_network = Neural(DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT,
                             DEFAULT_NUMBER_SAMPLES, args.threshold, DEFAULT_NUMBER_EPOCHS,
-                            DEFAULT_LEARNING_PATTERNS_PER_ID, DEFAULT_LSTM_MODE, DEFAULT_OPTIMIZER,
+                            DEFAULT_LEARNING_PATTERNS_PER_ID, DEFAULT_OPTIMIZER,
                             DEFAULT_FUNCTION_LOSS, args.dense_layers, DEFAULT_OUTPUT_EVOLUTION_ERROR_FIGURES)
 
     neural_network.load_models(args.model_architecture_file, args.model_weights_file)
 
     dataset_file = Dataset(DEFAULT_SIZE_WINDOW_LEFT, DEFAULT_SIZE_WINDOW_RIGHT, DEFAULT_NUMBER_SAMPLES,
-                           DEFAULT_LSTM_MODE, args.corrected_swarm_file)
+                            args.corrected_swarm_file)
     dataset_file.load_samples(args.failed_swarm_file)
     dataset_file.create_list_per_peer()
-
-    #log_file = open(DEFAULT_PATH_LOG+'number_fills.log', 'w')
-    number_fills = dataset_file.fill_gaps()
-    #log_file.write(str(number_fills))
-    #log_file.close()
+    dataset_file.fill_gaps()
     dataset_file.fill_borders()
     dataset_file.create_file_results()
 
@@ -142,50 +121,15 @@ def predict_neural_network(args):
     dataset_file.output_file.close()
 
 
-def info():
+def print_config(args):
 
-    msg = """
-
-                Correction of monitoring data - Machine learning 
-
-    Optional Parameters
-
-        --models                |  Define a template file saved as the current model.
-        --original_swarm_file   |  Original input file.
-        --training_swarm_file   |  File of training samples.
-        --path_file_results     |  Path file results.
-        --size_window_left      |  Size window left.
-        --size_window_right     |  Size window right.
-        --num_sample_training   |  Numbers samples to training.
-        --corrected_swarm_file  |  File corrected.
-        --failed_swarm          |  File failed swarm.
-        --lstm_mode             |  Active LSTM mode.        
-        --num_epochs            |  Number of training epochs.
-
-        --------------------------------------------------------------
-
-    Required Parameters
-
-        Training         | This command allow training your model.
-        Correct          | This command allow correct session.
-        Predict          | This command is reserved for developers.
-        Evaluation       | This command allow evaluation your model.
-        help             | This command show this message.
-        
-        """
-    print(msg)
-    exit()
-
-
-def imprime_config(args):
-    '''
-    Mostra os argumentos recebidos e as configurações processadas
-    :args: parser.parse_args
-    '''
     logging.info("Command:\n\t{0}\n".format(" ".join([x for x in sys.argv])))
     logging.info("Settings:")
+
     for k, v in sorted(vars(args).items()):
+
         logging.info("\t{0}: {1}".format(k, v))
+
     logging.info("")
 
 
@@ -217,9 +161,6 @@ def main():
     help_msg = 'full model weights file'
     parser.add_argument("--model_weights_file", type=str, help=help_msg, default=DEFAULT_MODEL_WEIGHTS_FILE)
 
-    #help_msg = ''
-    #parser.add_argument("--path_file_results", type=str, help=help_msg, default=DEFAULT_FILE_RESULTS)
-
     help_msg = ''
     parser.add_argument("--size_window_left", type=int, help=help_msg, default=DEFAULT_SIZE_WINDOW_LEFT)
 
@@ -247,12 +188,6 @@ def main():
     help_msg = ' seed (only for statistics)'
     parser.add_argument("--seed", type=int, help=help_msg, default=1)
 
-    help_msg = ''
-    parser.add_argument("--num_lstm_windows", type=int, help=help_msg, default=DEFAULT_LSTM_WINDOWS)
-
-    help_msg = ''
-    parser.add_argument("--lstm_mode", type=int, help=help_msg, default=DEFAULT_LSTM_MODE)
-
     help_msg = "Skip training of the machine learning model training?"
     parser.add_argument("--skip_train", "-t", default=False, help=help_msg, action='store_true')
 
@@ -265,34 +200,33 @@ def main():
     help_msg = "verbosity logging level (INFO=%d DEBUG=%d)" % (logging.INFO, logging.DEBUG)
     parser.add_argument("--verbosity", "-v", help=help_msg, default=DEFAULT_VERBOSITY_LEVEL, type=int)
 
-
-    # cmd_choices = ['Training', 'Correct', 'Analyse', 'help', 'Batch']
-    # parser.add_argument('cmd', choices=cmd_choices)
     args = parser.parse_args()
 
-    # configura o mecanismo de logging
     if args.verbosity == logging.DEBUG:
-        # mostra mais detalhes
+
         logging.basicConfig(format='%(asctime)s %(levelname)s {%(module)s} [%(funcName)s] %(message)s',
                             datefmt=TIME_FORMAT, level=args.verbosity)
 
     else:
-        logging.basicConfig(format='%(message)s',
-                            datefmt=TIME_FORMAT, level=args.verbosity)
 
-    # imprime configurações para fins de log
-    imprime_config(args)
+        logging.basicConfig(format='%(message)s', datefmt=TIME_FORMAT, level=args.verbosity)
+
+    print_config(args)
 
     if not args.skip_train:
+
         training_neural_network(args)
 
     if not args.skip_correct:
+
         predict_neural_network(args)
 
     if not args.skip_analyse:
+
         analyse(args)
 
 
 if __name__ == '__main__':
+
     sys.exit(main())
 
