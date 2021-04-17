@@ -3,7 +3,7 @@ from tqdm import tqdm
 
 class Dataset:
 
-    def __init__(self, size_window_left, size_window_right, number_samples, lstm_mode, file_results):
+    def __init__(self, size_window_left, size_window_right, number_samples, file_results):
 
         self.header = []
         self.list_swarm_loaded = []
@@ -61,6 +61,7 @@ class Dataset:
     def create_list_per_peer(self):
 
         for i in tqdm(range(len(self.list_swarm_loaded)), desc='Creating list peers'):
+
             self.create_list_peer(self.list_swarm_loaded[i])
 
     def clear_samples(self):
@@ -120,6 +121,7 @@ class Dataset:
     def fill_borders(self):
 
         for i in range(len(self.list_swarm_per_peer)):
+
             self.filling_borders(i)
 
     def filling_borders(self, id_peer):
@@ -127,12 +129,14 @@ class Dataset:
         list_swarm_borders = []
 
         for i in range(self.size_window_left):
+
             list_swarm_borders.append([-1, id_peer + 1, 0])
 
         self.list_swarm_per_peer[id_peer] = list_swarm_borders + self.list_swarm_per_peer[id_peer]
         list_swarm_borders = []
 
         for i in range(self.size_window_right + 1):
+
             list_swarm_borders.append([-1, id_peer + 1, 0])
 
         self.list_swarm_per_peer[id_peer] = self.list_swarm_per_peer[id_peer] + list_swarm_borders
@@ -156,6 +160,7 @@ class Dataset:
         sample_vectorized = []
 
         for i in range(len(sample)):
+
             sample_vectorized.append(float(sample[i][2]))
 
         return sample_vectorized, sample[5][2]
@@ -170,8 +175,8 @@ class Dataset:
             list_windows_x, list_windows_y = self.create_windows_per_peer(i)
 
             for j in range(len(list_windows_x)):
-                x, y = self.get_samples_vectorized(list_windows_x[j])
 
+                x, y = self.get_samples_vectorized(list_windows_x[j])
                 list_windows_to_predict_x.append(x)
                 list_windows_to_predict_y.append(float(y))
 
@@ -182,8 +187,6 @@ class Dataset:
         x, y = self.create_sample_to_training()
 
         for i in tqdm(range(len(x)), desc='Creating Samples'):
-
-            # Verificar isso
 
             if (x[i][4] < 0.5 and x[i][6] < 0.5) or ((x[i][4] > 0.5 > x[i][6]) and (0.5 > x[i][7]) and (0.5 > x[i][8])) or ((x[i][3] < 0.5) and (x[i][4] < 0.5) and (x[i][4] < 0.5 < x[i][6])):
                 y[i] = float(0)
@@ -207,23 +210,3 @@ class Dataset:
     def get_number_peers(self):
 
         return len(self.list_swarm_per_peer)
-
-    @staticmethod
-    def create_lstm_vector(x):
-
-        a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-
-        x = [a] + x
-
-        predict_vector = []
-
-        for i in range(len(x) - 1):
-
-            x_axis_1 = x[i].copy()
-            x_axis_2 = x[i + 1].copy()
-            x_axis_1[6] = float(0)
-            x_axis_1[5] = x_axis_2[4]
-
-            predict_vector.append([x_axis_1, x_axis_2])
-
-        return predict_vector
