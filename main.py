@@ -11,6 +11,11 @@ try:
     from tqdm import tqdm
     import argparse
     import logging
+    import matplotlib
+    import tensorflow
+    import numpy
+    import keras
+    import setuptools
 
 except ImportError as error:
 
