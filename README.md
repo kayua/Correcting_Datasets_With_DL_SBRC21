@@ -11,10 +11,10 @@ We made some initial experiments available with this repository.
 
 ## Input parameters:
 
-    Torrent Trace Correct - Machine Learning
+                    Torrent Trace Correct - Machine Learning
 
 
-    Optional Parameters
+    Optional Parameters(Main)
 
         --original_swarm_file     |
         --training_swarm_file     |
@@ -35,10 +35,11 @@ We made some initial experiments available with this repository.
         --seed                    |
         --num_lstm_windows        |
         --lstm_mode               |
-        --skip_train              |
-        --skip_correct            |
-        --skip_analyse            |
-        --verbosity               |
+        --skip_train              |  Skip training of the machine learning model training
+        --skip_correct            |  Skip correcting of the dataset
+        --skip_analyse            |  Skip analyzing of the results
+        --verbosity               |  Verbosity logging level 
+
         --------------------------------------------------------------
 
     Free Parameters
