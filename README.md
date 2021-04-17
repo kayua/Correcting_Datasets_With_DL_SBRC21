@@ -16,26 +16,23 @@ We made some initial experiments available with this repository.
 
     Optional Parameters(Main)
 
-        --original_swarm_file     |  File of ground truth.
-        --training_swarm_file     |  File of training samples.
+        --original_swarm_file     |  File of ground truth
+        --training_swarm_file     |  File of training samples
         --corrected_swarm_file    |  File of correction
         --failed_swarm_file       |  File of failed swarm
-
         --analyse_file            |  Analyse results with statistics
         --analyse_file_mode       |  Open mode (e.g. 'w' or 'a')
         --model_architecture_file |  Full model architecture file
         --model_weights_file      |  Full model weights file
-        --size_window_left        |
-        --size_window_right       |
-        --num_sample_training     |
-        --num_epochs              |
-        --threshold               |
-        --dense_layers            |
-        --pif                     |
-        --dataset                 |
-        --seed                    |
-        --num_lstm_windows        |
-        --lstm_mode               |
+        --size_window_left        |  Size window left
+        --size_window_right       |  Size window right
+        --num_sample_training     |  Number of samples training
+        --num_epochs              |  Number of epochs training
+        --threshold               |  Thresould of correction
+        --dense_layers            |  Number of dense layers
+        --pif                     |  pif (only for statistics)
+        --dataset                 |  Dataset (only for statistics)
+        --seed                    |  Seed (only for statistics)
         --skip_train              |  Skip training of the machine learning model training
         --skip_correct            |  Skip correcting of the dataset
         --skip_analyse            |  Skip analyzing of the results
