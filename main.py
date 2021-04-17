@@ -31,7 +31,7 @@ DEFAULT_TRAINING_SWARM_FILE = 'swarm/training/S2_25.sort_u_1n_3n'
 DEFAULT_CORRECTED_SWARM_FILE = 'swarm/results/swarm.corrected'
 DEFAULT_FAILED_SWARM_FILE = "swarm/failed/S1d.sort_u_1n_3n.fail10_seed1"
 DEFAULT_VALIDATION_SWARM_FILE = "swarm/validation/S1_25.sort_u_1n_3n"
-DEFAULT_OUTPUT_EVOLUTION_ERROR_FIGURES = "evolution_error/"
+DEFAULT_OUTPUT_EVOLUTION_ERROR_FIGURES = "evolution/"
 DEFAULT_MODEL_ARCHITECTURE_FILE = "models_saved/model_architecture.json"
 DEFAULT_MODEL_WEIGHTS_FILE = "models_saved/model_weights.h5"
 
