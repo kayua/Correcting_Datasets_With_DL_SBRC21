@@ -1,6 +1,7 @@
 # Correct Torrent Trace - Machine Learning
 
-Exemplo aplicação de aprendizado de máquinas a diversos problemas.
+Algorithm for correcting sessions of users of large-scale peer-to-peer systems based on deep learning.
+These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
 
 ## Redes neurais
 Esse repositório possui algumas implementações de algoritmos de aprendizado de máquinas utilizando APIs conhecidas.
