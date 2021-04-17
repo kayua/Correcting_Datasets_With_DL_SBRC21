@@ -4,10 +4,6 @@ Algorithm for correcting sessions of users of large-scale peer-to-peer systems b
 These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
 We made some initial experiments available with this repository.
 
-## Free parameters:
-
-
-
 
 ## Input parameters:
 
@@ -24,8 +20,6 @@ We made some initial experiments available with this repository.
         --analyse_file_mode       |  Open mode (e.g. 'w' or 'a')
         --model_architecture_file |  Full model architecture file
         --model_weights_file      |  Full model weights file
-        --size_window_left        |  Size window left
-        --size_window_right       |  Size window right
         --num_sample_training     |  Number of samples training
         --num_epochs              |  Number of epochs training
         --threshold               |  Thresould of correction
