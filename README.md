@@ -16,14 +16,14 @@ We made some initial experiments available with this repository.
 
     Optional Parameters(Main)
 
-        --original_swarm_file     |
-        --training_swarm_file     |
-        --corrected_swarm_file    |
+        --original_swarm_file     |  File of ground truth.
+        --training_swarm_file     |  File of training samples.
+        --corrected_swarm_file    |  File of correction
         --failed_swarm_file       |
-        --analyse_file            |
-        --analyse_file_mode       |
-        --model_architecture_file |
-        --model_weights_file      |
+        --analyse_file            |  Analyse results with statistics
+        --analyse_file_mode       |  Open mode (e.g. 'w' or 'a')
+        --model_architecture_file |  Full model architecture file
+        --model_weights_file      |  Full model weights file
         --size_window_left        |
         --size_window_right       |
         --num_sample_training     |

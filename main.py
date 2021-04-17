@@ -193,7 +193,7 @@ def main():
 
     parser = argparse.ArgumentParser(description='Torrent Trace Correct - Machine Learning')
 
-    help_msg = ''
+    help_msg = 'File of ground truth.'
     parser.add_argument("--original_swarm_file", type=str, help=help_msg, default=DEFAULT_ORIGINAL_SWARM_FILE)
 
     help_msg = ''
