@@ -2,15 +2,23 @@
 
 Algorithm for correcting sessions of users of large-scale peer-to-peer systems based on deep learning.
 These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
+We made some initial experiments available with this repository.
 
 ## Redes neurais
-Esse repositório possui algumas implementações de algoritmos de aprendizado de máquinas utilizando APIs conhecidas.
+Free parameters of the learning model.
 
-`1 - Redes neurais - Gerais`
+`1 - Number of neurons per layers`
 
-`2 - Redes neurais - Pré-treinadas`
+`2 - Training optimization algorithm`
 
-`3 - Clusters - Básico-Avançado`
+`3 - Number epochs`
+
+`4 - Number neural layers`
+
+`4 - Dropout probability`
+
+`5 - Threshold of correction`
+
 
 
 ## Implementações:
