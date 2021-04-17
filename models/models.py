@@ -1,10 +1,8 @@
 import datetime
-
 import matplotlib.pyplot
 from tensorflow.python.keras import Input
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.layers import Dropout
-from tensorflow.python.keras.layers import LSTM
 from tensorflow.python.keras.models import Model
 from tensorflow.python.keras.models import model_from_json
 import tensorflow as tf
@@ -14,18 +12,16 @@ tf.get_logger().setLevel('INFO')
 
 class Neural:
 
-    def __init__(self, number_windows_lstm, size_window_left, size_window_right, number_samples, threshold,
-                 number_epochs, learning_patterns_per_id, lstm_mode, optimizer_function, loss_function, dense_layers,
-                 output_evolution_error_figures):
+    def __init__(self, size_window_left, size_window_right, number_samples, threshold, number_epochs,
+                      learning_patterns_per_id, optimizer_function, loss_function, dense_layers,
+                      output_evolution_error_figures):
 
-        self.number_windows_lstm = number_windows_lstm
         self.size_windows_left = size_window_left
         self.size_window_right = size_window_right
         self.number_samples = number_samples
         self.threshold = threshold
         self.number_epochs = number_epochs
         self.learning_patterns_per_id = learning_patterns_per_id
-        self.lstm_mode = lstm_mode
         self.optimizer_function = optimizer_function
         self.loss_function = loss_function
         self.output_evolution_error_figures = output_evolution_error_figures
@@ -34,22 +30,15 @@ class Neural:
 
     def create_neural_network(self):
 
-        if self.lstm_mode:
+        input_size = Input(shape=(self.size_windows_left + self.size_window_right + 1,))
+        # Please do not change this layer
+        self.neural_network = Dense(20, )(input_size)
+        self.neural_network = Dropout(0.2)(self.neural_network)
 
-            input_size = Input(shape=(self.number_windows_lstm, self.size_windows_left + self.size_window_right + 1,))
-            self.neural_network = LSTM(20)(input_size)
+        for i in range(self.dense_layers - 1):
 
-        else:
-
-            input_size = Input(shape=(self.size_windows_left + self.size_window_right + 1,))
-            # Please do not change this layer
-            self.neural_network = Dense(20, )(input_size)
-            self.neural_network = Dropout(0.2)(self.neural_network)
-
-            for i in range(self.dense_layers - 1):
-
-                self.neural_network = Dense(20)(self.neural_network)
-                self.neural_network = Dropout(0.5)(self.neural_network)
+            self.neural_network = Dense(20)(self.neural_network)
+            self.neural_network = Dropout(0.5)(self.neural_network)
 
         # Please do not change this layer
         self.neural_network = Dense(1, activation='sigmoid')(self.neural_network)
@@ -66,7 +55,6 @@ class Neural:
                                           validation_data=(x_validation, y_validation), )
         self.plotter_error_evaluate(history.history['mean_squared_error'], history.history['val_mean_squared_error'],
                                     first_test_training, first_test_validation)
-        # self.plotter_error_evaluate(history.history['accuracy'], history.history['val_accuracy'], first_test_training, first_test_validation)
 
     def plotter_error_evaluate(self, mean_square_error_training, mean_square_error_evaluate, first_error_training,
                                first_error_evaluate):
@@ -116,26 +104,6 @@ class Neural:
 
         return sample_vectorized, sample[5][2]
 
-    @staticmethod
-    def create_lstm_vector(x):
-
-        lstm_add_windows = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-
-        sample_x = [lstm_add_windows] + x
-
-        predict_vector = []
-
-        for i in range(len(sample_x) - 1):
-
-            x_axis_1 = sample_x[i].copy()
-            x_axis_2 = sample_x[i + 1].copy()
-            x_axis_1[6] = float(0)
-            x_axis_1[5] = x_axis_2[4]
-
-            predict_vector.append([x_axis_1, x_axis_2])
-
-        return predict_vector
-
     def predict(self, x):
 
         x_axis = []
@@ -148,15 +116,12 @@ class Neural:
             x_axis.append(x_temp)
             y_axis.append(y_temp)
 
-        if self.lstm_mode:
-
-            x_axis = self.create_lstm_vector(x_axis)
-
         predicted = self.neural_network.predict(x_axis)
 
         for i in range(len(predicted)):
 
             if predicted[i] > self.threshold or y_axis[i] > 0.8:
+
                 results_predicted.append(x[i][5])
 
         return results_predicted
