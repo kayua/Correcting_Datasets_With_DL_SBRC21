@@ -11,10 +11,10 @@ We made some initial experiments available with this repository.
 
 ## Input parameters:
 
-                Torrent Trace Correct - Machine Learning
+    Torrent Trace Correct - Machine Learning
 
 
-    Optional Parameters 'main.py'
+    Optional Parameters
 
         --original_swarm_file     |
         --training_swarm_file     |
