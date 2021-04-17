@@ -9,12 +9,10 @@ class Dataset:
         self.list_swarm_loaded = []
         self.list_swarm_per_peer = []
         self.output_file = None
-
         self.size_window_left = size_window_left
         self.size_window_right = size_window_right
         self.number_samples = number_samples
         self.file_results = file_results
-        self.lstm_mode = lstm_mode
         self.number_fills = 0
 
     def load_samples(self, swarm_file):
