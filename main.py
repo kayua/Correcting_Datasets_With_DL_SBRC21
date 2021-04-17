@@ -145,13 +145,13 @@ def main():
     help_msg = 'File of ground truth.'
     parser.add_argument("--original_swarm_file", type=str, help=help_msg, default=DEFAULT_ORIGINAL_SWARM_FILE)
 
-    help_msg = ''
+    help_msg = 'File of training samples'
     parser.add_argument("--training_swarm_file", type=str, help=help_msg, default=DEFAULT_TRAINING_SWARM_FILE)
 
-    help_msg = ''
+    help_msg = 'File of correction'
     parser.add_argument("--corrected_swarm_file", type=str, help=help_msg, default=DEFAULT_CORRECTED_SWARM_FILE)
 
-    help_msg = ''
+    help_msg = 'File of failed swarm'
     parser.add_argument("--failed_swarm_file", type=str, help=help_msg, default=DEFAULT_FAILED_SWARM_FILE)
 
     help_msg = 'analyse results with statistics'

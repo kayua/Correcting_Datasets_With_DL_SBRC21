@@ -599,3 +599,79 @@ END ############################################
 
 
 
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 15:23:59.491739
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1a
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 129615
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 12218
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 128171
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10774
+  False positive (FP): 1444
+  False negative (FN): 3405
+  True negative  (TN): 115953
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1a;0;131576;14179;12218;10774;1444;3405;115953
+
+END ############################################
+
+
+
+
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 15:30:22.026963
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1b
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 130820
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 13423
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 127810
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10413
+  False positive (FP): 3010
+  False negative (FN): 3766
+  True negative  (TN): 114387
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1b;0;131576;14179;13423;10413;3010;3766;114387
+
+END ############################################
+
+
+
+

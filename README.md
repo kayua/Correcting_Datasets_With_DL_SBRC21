@@ -40,14 +40,6 @@ We made some initial experiments available with this repository.
 
         --------------------------------------------------------------
 
-    Free Parameters
-
-        1 - Number of neurons per layers
-        2 - Training optimization algorithm
-        3 - Number epochs
-        4 - Number neural layers
-        5 - Dropout probability
-        6 - Threshold of correction
 
 ## Requirements:
 
