@@ -33,7 +33,7 @@ We made some initial experiments available with this repository.
         --pif                     |  pif (only for statistics)
         --dataset                 |  Dataset (only for statistics)
         --seed                    |  Seed (only for statistics)
-        --skip_train              |  Skip training of the machine learning model training
+        --skip_train              |  Skip training
         --skip_correct            |  Skip correcting of the dataset
         --skip_analyse            |  Skip analyzing of the results
         --verbosity               |  Verbosity logging level 
