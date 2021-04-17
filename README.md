@@ -11,15 +11,17 @@ We made some initial experiments available with this repository.
 
 ## Input parameters:
 
-                    Torrent Trace Correct - Machine Learning
+                    Correcting Datasets - Machine Learning
 
 
-    Optional Parameters(Main)
-
-        --original_swarm_file     |  File of ground truth
-        --training_swarm_file     |  File of training samples
-        --corrected_swarm_file    |  File of correction
-        --failed_swarm_file       |  File of failed swarm
+    Parameters
+        
+        file
+            --original_swarm_file     |  File of ground truth
+            --training_swarm_file     |  File of training samples
+            --corrected_swarm_file    |  File of correction
+            --failed_swarm_file       |  File of failed swarm
+        
         --analyse_file            |  Analyse results with statistics
         --analyse_file_mode       |  Open mode (e.g. 'w' or 'a')
         --model_architecture_file |  Full model architecture file

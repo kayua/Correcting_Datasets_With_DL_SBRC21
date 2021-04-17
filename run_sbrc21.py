@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 try:
+
     import sys
     from tqdm import tqdm
     import argparse
@@ -26,8 +27,6 @@ except ImportError as error:
     print()
     sys.exit(-1)
 
-
-
 DEFAULT_OUTPUT_FILE = "sbrc21.txt"
 DEFAULT_APPEND_OUTPUT_FILE = False
 DEFAULT_VERBOSITY_LEVEL = logging.INFO
@@ -42,29 +41,33 @@ PATH_FAILED = "data/02_failed"
 PATH_CORRECTED = "data/03_corrected"
 PATH_MODEL = "models_saved"
 PATH_LOG = 'logs/'
-
 PATHS = [PATH_ORIGINAL, PATH_TRAINING, PATH_FAILED, PATH_CORRECTED, PATH_MODEL, PATH_LOG]
 
-def imprime_config(args):
-    '''
-    Mostra os argumentos recebidos e as configurações processadas
-    :args: parser.parse_args
-    '''
+
+def print_config(args):
+
     logging.info("Command:\n\t{0}\n".format(" ".join([x for x in sys.argv])))
     logging.info("Settings:")
+
     for k, v in sorted(vars(args).items()):
         logging.info("\t{0}: {1}".format(k, v))
+
     logging.info("")
 
+
 def convert_flot_to_int(value):
+
     if isinstance(value, float):
         value = int(value * 100)
+
     return value
 
 
 def get_original_filename(dataset, full=True):
+
     if full:
         return "{}/{}".format(PATH_ORIGINAL, dataset)
+
     else:
         return "{}".format(dataset)
 
@@ -137,12 +140,11 @@ def run_cmd(cmd):
     # transforma em array por questões de segurança -> https://docs.python.org/3/library/shlex.html
     cmd_array = shlex.split(cmd)
     logging.debug("Command array: {}".format(cmd_array))
-
-    # executa comando em subprocesso
     subprocess.run(cmd_array, check=True)
 
 
 class Campaign():
+
     def __init__(self, datasets, pifs, dense_layers, thresholds):
         self.datasets = datasets
         self.dense_layers = dense_layers
@@ -181,11 +183,14 @@ def check_files(files):
 def main():
 
     print("Creating the structure of directories...")
+
     for path in PATHS:
+
         cmd = "mkdir -p {}".format(path)
         print("path: {} cmd: {}".format(path, cmd))
         cmd_array = shlex.split(cmd)
         subprocess.run(cmd_array, check=True)
+
     print("done.")
     print("")
 
@@ -220,9 +225,9 @@ def main():
     # configura o mecanismo de logging
     if args.verbosity == logging.DEBUG:
         # mostra mais detalhes
-        logging_format='%(asctime)s\t***\t%(levelname)s {%(module)s} [%(funcName)s] %(message)s'
+        logging_format = '%(asctime)s\t***\t%(levelname)s {%(module)s} [%(funcName)s] %(message)s'
 
-    #formatter = logging.Formatter(logging_format, datefmt=TIME_FORMAT, level=args.verbosity)
+    # formatter = logging.Formatter(logging_format, datefmt=TIME_FORMAT, level=args.verbosity)
     logging.basicConfig(format=logging_format, level=args.verbosity)
 
     # Add file rotating handler, with level DEBUG
@@ -232,29 +237,21 @@ def main():
     logging.getLogger().addHandler(rotatingFileHandler)
 
     # imprime configurações para fins de log
-    imprime_config(args)
-
-
+    print_config(args)
 
     datasets = ["S1a", "S1b", "S1c", "S1d"]
-    # # [1, 2, 3]
-    # alphas = [.75, .50, .95]
-    # pifs = [0.02, 0.05, 0.10, 0.15, 0.25, 0.50]
-    c1 = Campaign(datasets=datasets, dense_layers=[8], thresholds=[.75], pifs=[.10])
+
+    c1 = Campaign(datasets=datasets, dense_layers=[3], thresholds=[.75], pifs=[.01, .02, .05, .10, .15, .25, .50])
     c2 = Campaign(datasets=datasets, dense_layers=[1, 5], thresholds=[.75], pifs=[.10])
     c3 = Campaign(datasets=datasets, dense_layers=[3], thresholds=[.05, .50, .95], pifs=[.10])
 
-    #cdemo = Campaign(datasets=["S1a"], dense_layers=[3], thresholds=[.75], pifs=[0.10])
+    ce = Campaign(datasets=["S4"], dense_layers=[3], thresholds=[.75], pifs=[None])
+
     cdemo = Campaign(datasets=datasets, dense_layers=[3], thresholds=[0.75], pifs=[0.10])
     campaigns = [cdemo]
 
     if args.campaign == "sbrc":
-        campaigns = [c1]
-
-
-    #campaigns = [ct] #
-
-    # S2_25_1.sort_u_1n_4n
+        campaigns = [c1, c2, c3]
 
     logging.info("\n\n\n")
     logging.info("##########################################")
@@ -267,7 +264,7 @@ def main():
             if not dense_layer in dense_layers_models.keys():
                 training_swarm_file = get_training_filename(training_dataset)
                 model_architecture_file = get_architecture_filename(training_dataset, dense_layer)
-                model_weights_file      = get_weights_filename(training_dataset, dense_layer)
+                model_weights_file = get_weights_filename(training_dataset, dense_layer)
                 dense_layers_models[dense_layer] = (model_architecture_file, model_weights_file)
                 print("amm")
                 check_files([training_swarm_file])
@@ -286,7 +283,7 @@ def main():
     logging.info("##########################################")
     logging.info(" EVALUATION ")
     logging.info("##########################################")
-    trials = range(args.start_trials, (args.start_trials+args.trials))
+    trials = range(args.start_trials, (args.start_trials + args.trials))
     count_trial = 1
     for trial in trials:
         logging.info("\tTrial {}/{} ".format(count_trial, len(trials)))
@@ -347,4 +344,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-

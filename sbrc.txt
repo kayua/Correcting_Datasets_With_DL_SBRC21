@@ -675,3 +675,193 @@ END ############################################
 
 
 
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 15:38:20.877448
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1c
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 129309
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 11912
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 128359
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10962
+  False positive (FP): 950
+  False negative (FN): 3217
+  True negative  (TN): 116447
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1c;0;131576;14179;11912;10962;950;3217;116447
+
+END ############################################
+
+
+
+
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 15:50:41.399856
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1a
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 129330
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 11933
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 128025
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10628
+  False positive (FP): 1305
+  False negative (FN): 3551
+  True negative  (TN): 116092
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1a;0;131576;14179;11933;10628;1305;3551;116092
+
+END ############################################
+
+
+
+
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 15:57:06.334608
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1b
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 130499
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 13102
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 127683
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10286
+  False positive (FP): 2816
+  False negative (FN): 3893
+  True negative  (TN): 114581
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1b;0;131576;14179;13102;10286;2816;3893;114581
+
+END ############################################
+
+
+
+
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 16:04:56.809338
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1c
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 129117
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 11720
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 128226
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10829
+  False positive (FP): 891
+  False negative (FN): 3350
+  True negative  (TN): 116506
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1c;0;131576;14179;11720;10829;891;3350;116506
+
+END ############################################
+
+
+
+
+
+BEGIN ############################################
+
+ RESULTS 
+  Now      : 2021-04-17 16:14:27.870693
+  Topology : [20, 20, 20, 1]
+  Threshold: 0.75
+  PIF      : 10%
+  Dataset  : S1d
+  Seed     : 0
+
+  Size files:           
+-----------------------------
+  Total Traces original file         : 131576
+  Total Traces failed file           : 117397
+  Total Traces corrected file        : 129042
+  Fails (Original-failed)            : 14179
+  Modifications (Original-corrected) : 11645
+------------------------------
+            Analyse:          
+------------------------------
+  Found in [Original, Corrected, Failed]: 117397
+  Found in [Original, Corrected]        : 128314
+  Found in [Original, Failed]           : 117397
+------------------------------
+            Scores:           
+------------------------------
+  True positive  (TP): 10917
+  False positive (FP): 728
+  False negative (FN): 3262
+  True negative  (TN): 116669
+#SUMNEW#;[20, 20, 20, 1];0.75;10%;S1d;0;131576;14179;11645;10917;728;3262;116669
+
+END ############################################
+
+
+
+
