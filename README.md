@@ -4,20 +4,15 @@ Algorithm for correcting sessions of users of large-scale peer-to-peer systems b
 These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
 We made some initial experiments available with this repository.
 
-## Redes neurais
-Free parameters of the learning model.
+## Free parameters:
+    Parameters
 
-|1 - Number of neurons per layers
-|
-|2 - Training optimization algorithm
-|
-|3 - Number epochs
-|
-|4 - Number neural layers
-|
-|4 - Dropout probability
-|
-|5 - Threshold of correction
+        1 - Number of neurons per layers
+        2 - Training optimization algorithm
+        3 - Number epochs
+        4 - Number neural layers
+        5 - Dropout probability
+        6 - Threshold of correction
 
 
 
