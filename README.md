@@ -16,16 +16,34 @@ We made some initial experiments available with this repository.
 
 
 
-## Implementações:
+## Input parameters:
 
-    Aplicação
-    
-        1    |  Rede neural perceptron para classificação de imagens Cifar100.
-        2    |  Rede neural convolutiva para classificação de imagem Cifar100.
-        3    |  Redes neurais predição de series usando rede recorrentes
-        4    |  Redes neurais pré-treinadas e cluster, classificação de imagens.
-        5    |  Clusters do básico ao avançado.
-        6    |  Rede Adversarial para geração de imagens. Dataset baby-face
+
+                Correction of monitoring data - Machine learning 
+
+    Optional Parameters
+
+        --models                |  Define a template file saved as the current model.
+        --original_swarm_file   |  Original input file.
+        --training_swarm_file   |  File of training samples.
+        --path_file_results     |  Path file results.
+        --size_window_left      |  Size window left.
+        --size_window_right     |  Size window right.
+        --num_sample_training   |  Numbers samples to training.
+        --corrected_swarm_file  |  File corrected.
+        --failed_swarm          |  File failed swarm.
+        --lstm_mode             |  Active LSTM mode.        
+        --num_epochs            |  Number of training epochs.
+
+        --------------------------------------------------------------
+
+    Required Parameters
+
+        Training         | This command allow training your model.
+        Correct          | This command allow correct session.
+        Predict          | This command is reserved for developers.
+        Evaluation       | This command allow evaluation your model.
+        help             | This command show this message.
 
 ## Requirements:
 
