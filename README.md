@@ -1,4 +1,4 @@
-# Correct Torrent Trace - Machine Learning
+# Correcting Datasets - Deep Learning (SBRC21)
 
 Algorithm for correcting sessions of users of large-scale peer-to-peer systems based on deep learning.
 These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
