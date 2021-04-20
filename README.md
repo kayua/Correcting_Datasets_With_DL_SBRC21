@@ -1,36 +1,35 @@
 # Correcting Datasets - Deep Learning (SBRC21)
 
 Algorithm for correcting sessions of users of large-scale peer-to-peer systems based on deep learning.
-These scripts contain a complete framework that allows you to simulate, correct and evaluate session failures.
-We made some initial experiments available with this repository.
+
 
 
 ## Input parameters:
 
-                    Correcting Datasets - Machine Learning
+Torrent Trace Correct - Machine Learning
 
+    optional arguments(MAIN):
 
-    Parameters
-        
-        --original_swarm_file     |  File of ground truth
-        --training_swarm_file     |  File of training samples
-        --corrected_swarm_file    |  File of correction
-        --failed_swarm_file       |  File of failed swarm
-        --analyse_file            |  Analyse results with statistics
-        --analyse_file_mode       |  Open mode (e.g. 'w' or 'a')
-        --model_architecture_file |  Full model architecture file
-        --model_weights_file      |  Full model weights file
-        --num_sample_training     |  Number of samples training
-        --num_epochs              |  Number of epochs training
-        --threshold               |  Thresould of correction
-        --dense_layers            |  Number of dense layers
-        --pif                     |  pif (only for statistics)
-        --dataset                 |  Dataset (only for statistics)
-        --seed                    |  Seed (only for statistics)
-        --skip_train              |  Skip training
-        --skip_correct            |  Skip correcting of the dataset
-        --skip_analyse            |  Skip analyzing of the results
-        --verbosity               |  Verbosity logging level 
+        -h,--help                 |   Show this help message and exit
+        --original_swarm_file     |   File of ground truth.
+        --training_swarm_file     |   File of training samples
+        --corrected_swarm_file    |   File of correction
+        --failed_swarm_file       |   File of failed swarm
+        --analyse_file            |   Analyse results with statistics
+        --analyse_file_mode       |   Open mode (e.g. 'w' or 'a')
+        --model_architecture_file |   Full model architecture file
+        --model_weights_file      |   Full model weights file
+        --num_epochs              |   Number of epochs
+        --threshold               |   i.e. alpha (e.g. 0.5 - 0.95)
+        --dense_layers            |   Number of dense layers (e.g. 1, 2, 3)
+        --pif PIF                 |   pif (only for statistics)
+        --dataset DATASET         |   Dataset (only for statistics)
+        --seed SEED               |   Seed (only for statistics)
+        --skip_train, -t          |   Skip training of the machine learning model training?
+        --skip_correct, -c        |   Skip correcting of the dataset?
+        --skip_analyse, -a        |   Skip analyzing of the results?
+        --verbosity VERBOSITY, -v |   Verbosity logging level (INFO=20 DEBUG=10)
+
 
         --------------------------------------------------------------
 
