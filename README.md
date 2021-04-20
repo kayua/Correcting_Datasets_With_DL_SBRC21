@@ -47,6 +47,9 @@ Torrent Trace Correct - Machine Learning
 
         --------------------------------------------------------------
 
+#  Run:
+`Python2 run_sbrc21.py -c sbrc`
+
 
 ## Requirements:
 
