@@ -46,7 +46,7 @@ Torrent Trace Correct - Machine Learning
 
 
         --------------------------------------------------------------
-        Full trace available in: https://github.com/ComputerNetworks-UFRGS/TraceCollection/tree/master/01_traces
+        Full traces available at: https://github.com/ComputerNetworks-UFRGS/TraceCollection/tree/master/01_traces
 
 #  Run (all experiments):
 `python3 run_sbrc21.py -c sbrc`
