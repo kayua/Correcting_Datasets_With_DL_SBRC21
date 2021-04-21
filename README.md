@@ -47,7 +47,7 @@ Torrent Trace Correct - Machine Learning
 
         --------------------------------------------------------------
 
-#  Run (all experimetns):
+#  Run (all experiments):
 `python3 run_sbrc21.py -c sbrc`
 
 # Run (only one scenario)
