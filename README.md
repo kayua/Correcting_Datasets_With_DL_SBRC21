@@ -16,7 +16,7 @@ Torrent Trace Correct - Machine Learning
         --append                |   Append output logging file with analysis results (default=False)
         --trials                |   Number of trials (default=1)
         --start_trials          |   Start trials (default=0)
-        --skip_train            |   Skip training of the machine learning model training?
+        --skip_train            |   Skip training of the machine learning model
         --campaign              |   Campaign [demo, sbrc21] (default=demo)
         --verbosity             |   Verbosity logging level (INFO=20 DEBUG=10)
 
