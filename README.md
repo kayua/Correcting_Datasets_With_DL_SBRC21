@@ -39,17 +39,19 @@ Torrent Trace Correct - Machine Learning
         --pif PIF                 |   pif (only for statistics)
         --dataset DATASET         |   Dataset (only for statistics)
         --seed SEED               |   Seed (only for statistics)
-        --skip_train, -t          |   Skip training of the machine learning model training?
-        --skip_correct, -c        |   Skip correcting of the dataset?
-        --skip_analyse, -a        |   Skip analyzing of the results?
+        --skip_train, -t          |   Skip training of the machine learning model
+        --skip_correct, -c        |   Skip correction of the dataset
+        --skip_analyse, -a        |   Skip analyzis of the results
         --verbosity VERBOSITY, -v |   Verbosity logging level (INFO=20 DEBUG=10)
 
 
         --------------------------------------------------------------
 
-#  Run:
-`Python2 run_sbrc21.py -c sbrc`
+#  Run (all experimetns):
+`python3 run_sbrc21.py -c sbrc`
 
+# Run (only one scenario)
+`python3 main.py`
 
 ## Requirements:
 
