@@ -193,13 +193,13 @@ def main():
     help_msg = ' seed (only for statistics)'
     parser.add_argument("--seed", type=int, help=help_msg, default=1)
 
-    help_msg = "Skip training of the machine learning model training?"
+    help_msg = "Skip training of the machine learning model"
     parser.add_argument("--skip_train", "-t", default=False, help=help_msg, action='store_true')
 
-    help_msg = "Skip correcting of the dataset?"
+    help_msg = "Skip correction of the dataset"
     parser.add_argument("--skip_correct", "-c", default=False, help=help_msg, action='store_true')
 
-    help_msg = "Skip analyzing of the results?"
+    help_msg = "Skip analyzis of the results"
     parser.add_argument("--skip_analyse", "-a", default=False, help=help_msg, action='store_true')
 
     help_msg = "verbosity logging level (INFO=%d DEBUG=%d)" % (logging.INFO, logging.DEBUG)
