@@ -1,6 +1,7 @@
 # Correcting Datasets - Deep Learning (SBRC21)
 
 Algorithm for correcting sessions of users of large-scale peer-to-peer systems based on deep learning.
+
 Complementary repository to the work available at:  https://sol.sbc.org.br/index.php/sbrc/article/view/16766/16608
 
 
